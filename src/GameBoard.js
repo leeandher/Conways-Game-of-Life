@@ -20,10 +20,13 @@ class GameBoard extends React.Component {
   data
   
   */
+
+  state = {
+    data: []
+  };
   componentDidMount() {
-    fetch("../data/sample-board.json")
-      .then(res => res.json())
-      .then(data => console.table(data), err => console.error(err));
+    const { data } = require("./data/sample-board.json");
+    this.setState({ data });
   }
 
   render() {
@@ -31,7 +34,7 @@ class GameBoard extends React.Component {
 
     const rows = [];
     for (let i = 0; i <= this.props.height; i++) {
-      rows.push(<Row key={i} row={i} width={50} />);
+      rows.push(<Row key={i} row={i} width={50} data={this.state.data} />);
     }
     return <section className="game-board">{rows}</section>;
   }

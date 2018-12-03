@@ -19,16 +19,16 @@
 
 .game-board__cell {
   background: palevioletred;
-  margin: 0.5px;
-  height: 10px;
-  width: 10px;
+  margin: $cell-margin;
+  height: $cell-size;
+  width: $cell-size;
   &.game-board__cell--dead {
-    background: red;
+    background: $cell-colour--dead;
   }
   &.game-board__cell--alive-new {
-    background: palegreen;
+    background: $cell-colour--alive-new;
   }
   &.game-board__cell--alive-old {
-    background: green;
+    background: $cell-colour--alive-old;
   }
 }
