@@ -9,7 +9,7 @@
     "react-scripts": "2.1.1"
   },
   "scripts": {
-    "sass": "node-sass --watch src/styles/scss -o src/styles/css",
+    "sass": "node ./scripts/sass-reduce.js && node-sass --watch src/styles/scss -o src/styles/css",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
