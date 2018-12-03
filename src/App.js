@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <GameBoard />
+        <GameBoard height={50} width={40} />
         <ControlPanel />
       </div>
     );

@@ -1,3 +1,5 @@
+@import "variables";
+
 .App {
   text-align: center;
 }
@@ -5,16 +7,28 @@
 //GameBoard
 .game-board {
   background: pink;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .game-board__row {
   background: palegreen;
   display: flex;
+  justify-content: center;
 }
 
 .game-board__cell {
   background: palevioletred;
-  margin: 2px;
-  height: 20px;
-  width: 20px;
+  margin: 0.5px;
+  height: 10px;
+  width: 10px;
+  &.game-board__cell--dead {
+    background: red;
+  }
+  &.game-board__cell--alive-new {
+    background: palegreen;
+  }
+  &.game-board__cell--alive-old {
+    background: green;
+  }
 }
