@@ -6,19 +6,18 @@
 
 //GameBoard
 .game-board {
-  background: pink;
+  background: blue;
   max-width: 720px;
   margin: 0 auto;
 }
 
 .game-board__row {
-  background: palegreen;
+  background: palegoldenrod;
   display: flex;
   justify-content: center;
 }
 
 .game-board__cell {
-  background: palevioletred;
   margin: $cell-margin;
   height: $cell-size;
   width: $cell-size;
