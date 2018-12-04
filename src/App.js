@@ -8,6 +8,7 @@ class App extends React.Component {
   state = {
     height: 30, //50,
     width: 50, //60,
+    speed: 100,
     boardData: [],
     generation: 0
   };
@@ -50,10 +51,6 @@ class App extends React.Component {
           0
         );
 
-        // console.log(
-        //   `ROW: ${i + 1}, COL:${j +
-        //     1}, VAL: ${neighbours}, RED: ${neighbourValue}`
-        // );
         // Now take a look at the existing cell
         switch (cell) {
           // If alive...
@@ -68,13 +65,6 @@ class App extends React.Component {
             newBoard[i][j] = neighbourValue === 3 ? 1 : 0;
             break;
         }
-
-        //REDUCE TO SUM
-        //If <=1, save death to newboard,
-        //if >=4 save death to newboard
-
-        //if alive and still, save 2 to new board
-        //if  === 3 and dead, save alive to newboard
       });
     });
 
@@ -84,23 +74,29 @@ class App extends React.Component {
     });
   };
 
+  spawnCell = (row, col) => {
+    const newBoard = this.state.boardData.map(row => [...row]);
+    newBoard[row][col] = newBoard[row][col] > 0 ? 0 : 1;
+    this.setState({ boardData: newBoard });
+  };
+
   componentDidMount() {
     this.randomizeBoard();
-    setInterval(() => this.stepBoard(), 100);
+    setInterval(() => this.stepBoard(), this.state.speed);
   }
 
   render() {
     return (
       <div className="App">
         <Header />
-        <h1>{this.state.generation}</h1>
+        <h1>Generation: {this.state.generation}</h1>
         <GameBoard
           height={this.state.height}
           width={this.state.width}
           boardData={this.state.boardData}
+          spawnCell={this.spawnCell}
         />
-        <button onClick={this.stepBoard}>Test increment</button>
-        <ControlPanel />
+        {/* <ControlPanel /> */}
       </div>
     );
   }

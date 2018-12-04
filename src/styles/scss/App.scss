@@ -7,7 +7,7 @@
 //GameBoard
 .game-board {
   background: $board-background;
-  max-width: 720px;
+  // max-width: 720px;
   margin: 0 auto;
 }
 
@@ -20,6 +20,7 @@
   margin: $cell-margin;
   height: $cell-size;
   width: $cell-size;
+  // transition: all 0.75s linear;
   &.game-board__cell--dead {
     background: $cell-colour--dead;
   }
