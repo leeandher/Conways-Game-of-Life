@@ -35,24 +35,13 @@ class GameBoard extends React.Component {
   data
   */
 
-  // Initial state
-  state = {
-    data: []
-  };
-
-  // Lifecycle methods
-  componentDidMount() {
-    const { data } = require("./data/sample-board.json");
-    this.setState({ data });
-  }
-
   render() {
-    if (!this.state.data.length) return null;
+    if (!this.props.boardData.length) return null;
 
     // Create all the rows
     const rows = [];
     for (let i = 0; i < this.props.height; i++) {
-      rows.push(<Row key={i} row={i} rowData={this.state.data[i]} />);
+      rows.push(<Row key={i} row={i} rowData={this.props.boardData[i]} />);
     }
     return <section className="game-board">{rows}</section>;
   }
