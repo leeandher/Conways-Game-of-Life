@@ -6,13 +6,12 @@
 
 //GameBoard
 .game-board {
-  background: blue;
+  background: $board-background;
   max-width: 720px;
   margin: 0 auto;
 }
 
 .game-board__row {
-  background: palegoldenrod;
   display: flex;
   justify-content: center;
 }

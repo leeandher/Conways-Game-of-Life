@@ -1,6 +1,8 @@
+$board-background: transparent;
+
 $cell-size: 13px;
 $cell-margin: 0.5px;
 
-$cell-colour--dead: palevioletred;
-$cell-colour--alive-new: palegreen;
-$cell-colour--alive-old: green;
+$cell-colour--dead: rgb(0, 0, 0);
+$cell-colour--alive-new: rgb(57, 180, 189);
+$cell-colour--alive-old: rgb(17, 255, 223);
