@@ -6,19 +6,25 @@ import ControlPanel from "./ControlPanel";
 
 class App extends React.Component {
   state = {
-    height: 30, //50,
-    width: 50, //60,
+    size: {
+      type: "medium",
+      height: 30,
+      width: 50
+    },
     speed: 100,
-    boardData: [],
-    generation: 0
+    generation: 0,
+    boardData: []
   };
 
-  randomizeBoard = () => {
+  randomizeBoard = (
+    height = this.state.size.height,
+    width = this.state.size.width
+  ) => {
     // Generate the random board
     const newBoard = [];
-    for (let i = 0; i < this.state.height; i++) {
+    for (let i = 0; i < height; i++) {
       const rowData = [];
-      for (let j = 0; j < this.state.width; j++) {
+      for (let j = 0; j < width; j++) {
         rowData.push(Math.round(Math.random()));
       }
       newBoard.push(rowData);
@@ -40,9 +46,11 @@ class App extends React.Component {
           i !== 0 ? currentBoard[i - 1][j + 1] || 0 : 0, // Top right
           row[j - 1] || 0, // Left
           row[j + 1] || 0, // Right
-          i !== this.state.height - 1 ? currentBoard[i + 1][j - 1] || 0 : 0, // Bottom left
-          i !== this.state.height - 1 ? currentBoard[i + 1][j] || 0 : 0, // Below
-          i !== this.state.height - 1 ? currentBoard[i + 1][j + 1] || 0 : 0 // Bottom right
+          i !== this.state.size.height - 1
+            ? currentBoard[i + 1][j - 1] || 0
+            : 0, // Bottom left
+          i !== this.state.size.height - 1 ? currentBoard[i + 1][j] || 0 : 0, // Below
+          i !== this.state.size.height - 1 ? currentBoard[i + 1][j + 1] || 0 : 0 // Bottom right
         ];
 
         // Ignore the 'old'/'new' alive values and sum them as ones
@@ -80,9 +88,31 @@ class App extends React.Component {
     this.setState({ boardData: newBoard });
   };
 
+  resize = e => {
+    const type = e.target.value;
+    const newSize = {};
+    switch (type) {
+      case "large":
+        newSize.height = 50;
+        newSize.width = 60;
+        break;
+      case "medium":
+      default:
+        newSize.height = 30;
+        newSize.width = 40;
+        break;
+      case "small":
+        newSize.height = 20;
+        newSize.width = 30;
+    }
+    newSize.type = type;
+    this.randomizeBoard(newSize.height, newSize.width);
+    this.setState({ size: newSize });
+  };
+
   componentDidMount() {
     this.randomizeBoard();
-    setInterval(() => this.stepBoard(), this.state.speed);
+    // setInterval(() => this.stepBoard(), this.state.speed);
   }
 
   render() {
@@ -91,12 +121,12 @@ class App extends React.Component {
         <Header />
         <h1>Generation: {this.state.generation}</h1>
         <GameBoard
-          height={this.state.height}
-          width={this.state.width}
+          height={this.state.size.height}
+          width={this.state.size.width}
           boardData={this.state.boardData}
           spawnCell={this.spawnCell}
         />
-        {/* <ControlPanel /> */}
+        <ControlPanel size={this.state.size.type} resize={this.resize} />
       </div>
     );
   }
