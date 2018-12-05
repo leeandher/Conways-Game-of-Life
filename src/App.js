@@ -1,8 +1,12 @@
 import React from "react";
 
-import Header from "./Header";
+import { Layout, Menu, Icon } from "antd";
+
 import GameBoard from "./GameBoard";
 import ControlPanel from "./ControlPanel";
+
+const { Header, Content, Footer, Sider } = Layout;
+const { SubMenu } = Menu;
 
 class App extends React.Component {
   state = {
@@ -13,6 +17,8 @@ class App extends React.Component {
     },
     speed: 100,
     generation: 0,
+    collapsed: false,
+    isPlaying: false,
     boardData: []
   };
 
@@ -117,17 +123,105 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <Header />
-        <h1>Generation: {this.state.generation}</h1>
-        <GameBoard
-          height={this.state.size.height}
-          width={this.state.size.width}
-          boardData={this.state.boardData}
-          spawnCell={this.spawnCell}
-        />
-        <ControlPanel size={this.state.size.type} resize={this.resize} />
-      </div>
+      <React.Fragment>
+        <Header>
+          <h1 style={{ color: "white" }}>Conway Game of Life</h1>
+        </Header>
+        <Layout>
+          <Sider
+            collapsible
+            collapsed={this.state.collapsed}
+            onCollapse={collapsed => this.setState({ collapsed })}
+          >
+            <Menu theme="dark">
+              <Menu.Item>
+                <Icon type={this.state.isPlaying ? "pause" : "caret-right"} />
+                <span>{this.state.isPlaying ? "Pause" : "Play"}</span>
+              </Menu.Item>
+              <Menu.Item>
+                <Icon type="step-forward" />
+                <span>Increment</span>
+              </Menu.Item>
+              <Menu.Item>
+                <Icon type="close" />
+                <span>Clear</span>
+              </Menu.Item>
+              <Menu.Item>
+                <Icon type="redo" />
+                <span>Randomize</span>
+              </Menu.Item>
+              <Menu.Divider />
+              <SubMenu
+                title={
+                  <React.Fragment>
+                    <Icon type="forward" />
+                    <span>Speed</span>
+                  </React.Fragment>
+                }
+              >
+                <Menu.Item>Slow</Menu.Item>
+                <Menu.Item>Medium</Menu.Item>
+                <Menu.Item>Fast</Menu.Item>
+              </SubMenu>
+
+              <SubMenu
+                title={
+                  <React.Fragment>
+                    <Icon type="pic-center" />
+                    <span>Size</span>
+                  </React.Fragment>
+                }
+              >
+                <Menu.Item>Slow</Menu.Item>
+                <Menu.Item>Medium</Menu.Item>
+                <Menu.Item>Fast</Menu.Item>
+              </SubMenu>
+
+              <SubMenu
+                title={
+                  <React.Fragment>
+                    <Icon type="star" />
+                    <span>Styling</span>
+                  </React.Fragment>
+                }
+              >
+                <Menu.Item>Slow</Menu.Item>
+                <Menu.Item>Medium</Menu.Item>
+                <Menu.Item>Fast</Menu.Item>
+              </SubMenu>
+
+              <SubMenu
+                title={
+                  <React.Fragment>
+                    <Icon type="build" />
+                    <span>Patterns</span>
+                  </React.Fragment>
+                }
+              >
+                <Menu.Item>Slow</Menu.Item>
+                <Menu.Item>Medium</Menu.Item>
+                <Menu.Item>Fast</Menu.Item>
+              </SubMenu>
+
+              <Menu.Item />
+              <Menu.Item />
+              <Menu.Item />
+            </Menu>
+          </Sider>
+          <Layout>
+            <Content>
+              <h1>Generation: {this.state.generation}</h1>
+              <GameBoard
+                height={this.state.size.height}
+                width={this.state.size.width}
+                boardData={this.state.boardData}
+                spawnCell={this.spawnCell}
+              />
+              <ControlPanel size={this.state.size.type} resize={this.resize} />
+            </Content>
+          </Layout>
+        </Layout>
+      </React.Fragment>
     );
   }
 }

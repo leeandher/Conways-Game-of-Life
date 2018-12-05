@@ -5,7 +5,7 @@ class ControlPanel extends Component {
   render() {
     return (
       <section className="control-panel">
-        <h2>Controls</h2>
+        <h2>ControlPanel</h2>
         <Radio.Group value={this.props.size} onChange={this.props.resize}>
           <Radio.Button value="small">Small</Radio.Button>
           <Radio.Button value="medium">Medium</Radio.Button>
