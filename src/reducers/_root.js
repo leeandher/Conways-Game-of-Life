@@ -6,5 +6,8 @@ import config from "./config";
 
 const rootReducer = combineReducers({
   board,
-  game
+  game,
+  config
 });
+
+export default rootReducer;

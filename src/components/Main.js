@@ -7,7 +7,7 @@ import GameBoard from "./GameBoard";
 const { Content, Sider } = Layout;
 const { SubMenu } = Menu;
 
-class Page extends React.Component {
+class Main extends React.Component {
   state = {
     size: {
       type: "medium",
@@ -221,4 +221,4 @@ class Page extends React.Component {
   }
 }
 
-export default Page;
+export default Main;

@@ -10,10 +10,11 @@ export const randomizeBoard = (height, width) => {
 };
 
 // Increment the board by one step
-export const incrementBoard = boardData => {
+export const incrementBoard = (boardData, generation) => {
   return {
     type: "INCREMENT_BOARD",
-    boardData
+    boardData,
+    generation
   };
 };
 

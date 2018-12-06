@@ -4,7 +4,7 @@ import { render } from "react-dom";
 import "./styles/css/index.css";
 import "antd/dist/antd.css";
 
-import Page from "./components/Page";
+import App from "./components/App";
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -13,7 +13,7 @@ import * as serviceWorker from "./serviceWorker";
 
 const Conway = () => (
   <Provider store={store}>
-    <Page />
+    <App />
   </Provider>
 );
 
