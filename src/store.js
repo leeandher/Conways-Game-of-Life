@@ -1,6 +1,6 @@
 import { createStore, compose } from "redux";
 
-import rootReducer from "./reducers/index";
+import rootReducer from "./reducers/_root";
 
 const defaultState = {};
 
