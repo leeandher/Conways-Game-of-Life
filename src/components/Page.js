@@ -190,7 +190,7 @@ class Page extends React.Component {
                 title={
                   <React.Fragment>
                     <Icon type="build" />
-                    <span>Patterns</span>
+                    <span>Presets</span>
                   </React.Fragment>
                 }
               >
