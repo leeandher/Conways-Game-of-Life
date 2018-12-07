@@ -3,9 +3,7 @@ import { connect } from "react-redux";
 import * as actionCreators from "../actions/actionCreators";
 import Main from "./Main";
 
-const mapStateToProps = s => {
-  return { posts: s.posts, comments: s.comments };
-};
+const mapStateToProps = state => state;
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(actionCreators, dispatch);

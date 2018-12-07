@@ -66,26 +66,9 @@ export const setSpeed = speed => {
 
 // Resize the board
 export const setSize = size => {
-  let height, width;
-  switch (size) {
-    case "large":
-      height = 50;
-      width = 60;
-      break;
-    default:
-    case "medium":
-      height = 40;
-      width = 50;
-      break;
-    case "small":
-      height = 25;
-      width = 30;
-      break;
-  }
   return {
     type: "SET_SIZE",
-    height,
-    width
+    size
   };
 };
 

@@ -2,17 +2,17 @@ const game = (state = {}, action) => {
   switch (action.type) {
     case "PLAY_GAME":
       return {
-        isPlaying: true,
-        generation: state.generation
+        ...state,
+        isPlaying: true
       };
     case "PAUSE_GAME":
       return {
-        isPlaying: false,
-        generation: state.generation
+        ...state,
+        isPlaying: false
       };
     case "INCREMENT_BOARD":
       return {
-        isPlaying: state.isPlaying,
+        ...state,
         generation: state.generation + 1
       };
     default:

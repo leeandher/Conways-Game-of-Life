@@ -216,7 +216,7 @@ class Main extends React.Component {
                 boardData={this.state.boardData}
                 spawnCell={this.spawnCell}
               />
-              <p>{}</p>
+              <p>{this.props.board}</p>
             </Content>
           </Layout>
         </Layout>
