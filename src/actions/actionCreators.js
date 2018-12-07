@@ -2,19 +2,25 @@
 
 // Randomize board
 export const randomizeBoard = (height, width) => {
+  const newBoard = [];
+  for (let i = 0; i < height; i++) {
+    const rowData = [];
+    for (let j = 0; j < width; j++) {
+      rowData.push(Math.round(Math.random()));
+    }
+    newBoard.push(rowData);
+  }
+
   return {
     type: "RANDOMIZE_BOARD",
-    height,
-    width
+    newBoard
   };
 };
 
 // Increment the board by one step
-export const incrementBoard = (boardData, generation) => {
+export const incrementBoard = () => {
   return {
-    type: "INCREMENT_BOARD",
-    boardData,
-    generation
+    type: "INCREMENT_BOARD"
   };
 };
 
@@ -36,10 +42,9 @@ export const loadPreset = preset => {
 /* GAME ACTIONS */
 
 // Play the game
-export const playGame = speed => {
+export const playGame = () => {
   return {
-    type: "PLAY_GAME",
-    speed
+    type: "PLAY_GAME"
   };
 };
 
@@ -60,7 +65,23 @@ export const setSpeed = speed => {
 };
 
 // Resize the board
-export const setSize = (height, width) => {
+export const setSize = size => {
+  let height, width;
+  switch (size) {
+    case "large":
+      height = 50;
+      width = 60;
+      break;
+    default:
+    case "medium":
+      height = 40;
+      width = 50;
+      break;
+    case "small":
+      height = 25;
+      width = 30;
+      break;
+  }
   return {
     type: "SET_SIZE",
     height,

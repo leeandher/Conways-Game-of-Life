@@ -207,12 +207,16 @@ class Main extends React.Component {
           <Layout>
             <Content>
               <h1>Generation: {this.state.generation}</h1>
+              <button onClick={() => this.props.randomizeBoard(30, 50)}>
+                Randomize
+              </button>
               <GameBoard
                 height={this.state.size.height}
                 width={this.state.size.width}
                 boardData={this.state.boardData}
                 spawnCell={this.spawnCell}
               />
+              <p>{}</p>
             </Content>
           </Layout>
         </Layout>

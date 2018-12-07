@@ -1,11 +1,51 @@
 const board = (state = [], action) => {
   switch (action.type) {
     case "RANDOMIZE_BOARD":
-      return state;
+      return action.newBoard;
     case "INCREMENT_BOARD":
-      return state;
+      const newBoard = state.map(row => [...row]);
+      state.forEach((row, i) => {
+        row.forEach((cell, j) => {
+          // Get the values of the surrounding 8 cells
+          const neighbours = [
+            i !== 0 ? state[i - 1][j - 1] || 0 : 0, // Top left
+            i !== 0 ? state[i - 1][j] || 0 : 0, // Above
+            i !== 0 ? state[i - 1][j + 1] || 0 : 0, // Top right
+            row[j - 1] || 0, // Left
+            row[j + 1] || 0, // Right
+            i !== this.state.size.height - 1 ? state[i + 1][j - 1] || 0 : 0, // Bottom left
+            i !== this.state.size.height - 1 ? state[i + 1][j] || 0 : 0, // Below
+            i !== this.state.size.height - 1 ? state[i + 1][j + 1] || 0 : 0 // Bottom right
+          ];
+
+          // Ignore the 'old'/'new' alive values and sum them as ones
+          const neighbourValue = neighbours.reduce(
+            (total, val) => total + Boolean(val),
+            0
+          );
+
+          // Now take a look at the existing cell
+          switch (cell) {
+            // If alive...
+            case 2:
+            case 1:
+              newBoard[i][j] =
+                neighbourValue <= 1 || neighbourValue >= 4 ? 0 : 2;
+              break;
+
+            //If dead...
+            case 0:
+            default:
+              newBoard[i][j] = neighbourValue === 3 ? 1 : 0;
+              break;
+          }
+        });
+      });
+
+      return newBoard;
     case "CLEAR_BOARD":
-      return state;
+      // Kill every cell on the board
+      return state.map(row => row.map(cell => 0));
     case "LOAD_PRESET":
       return state;
     default:
