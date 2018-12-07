@@ -34,13 +34,8 @@ const Row = ({ row, rowData, spawnCell }) => {
 };
 
 class GameBoard extends React.Component {
-  /* this.props
-  height
-  width
-  data
-  */
-
   render() {
+    // If no boardData is given, don't return anything
     if (!this.props.boardData.length) return null;
 
     // Create all the rows

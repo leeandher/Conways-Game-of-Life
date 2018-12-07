@@ -17,9 +17,11 @@ const game = (state = {}, action) => {
       };
     case "RANDOMIZE_BOARD":
     case "CLEAR_BOARD":
+    case "LOAD_PRESET":
     case "SET_SIZE":
       return {
         ...state,
+        isPlaying: false,
         generation: 0
       };
     default:
