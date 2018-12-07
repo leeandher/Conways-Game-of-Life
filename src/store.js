@@ -5,7 +5,7 @@ import rootReducer from "./reducers/_root";
 
 const defaultState = {
   config: {
-    speed: 300,
+    speed: 100,
     width: 50,
     height: 35,
     theme: "light"

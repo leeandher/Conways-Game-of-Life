@@ -1,10 +1,10 @@
 const board = (state = [], action) => {
   switch (action.type) {
-    // Generate a new board
+    // Generate a new board or a preset
     case "RANDOMIZE_BOARD":
     case "SET_SIZE":
+    case "LOAD_PRESET":
       return action.newBoard;
-
     // Increment to the next generation of the board
     case "INCREMENT_BOARD":
       const newBoard = state.map(row => [...row]);
@@ -53,9 +53,6 @@ const board = (state = [], action) => {
       // Kill every cell on the board
       return state.map(row => row.map(cell => 0));
 
-    // Load a given preset onto the board
-    case "LOAD_PRESET":
-      return state;
     case "SPAWN_CELL":
       const changedBoard = state.map(row => [...row]);
       changedBoard[action.row][action.col] =

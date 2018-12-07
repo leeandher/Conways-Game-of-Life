@@ -13,10 +13,10 @@ class Main extends React.Component {
   };
 
   componentDidMount() {
-    // setInterval(
-    //   () => this.props.incrementBoard(this.props.config.height),
-    //   this.props.config.speed
-    // );
+    setInterval(
+      () => this.props.incrementBoard(this.props.config.height),
+      this.props.config.speed
+    );
   }
 
   render() {
@@ -119,9 +119,9 @@ class Main extends React.Component {
                   </React.Fragment>
                 }
               >
-                {/* <Menu.Item>Slow</Menu.Item>
-                <Menu.Item>Medium</Menu.Item>
-                <Menu.Item>Fast</Menu.Item> */}
+                <Menu.Item onClick={() => this.props.loadPreset("Glider Gun")}>
+                  Glider Gun
+                </Menu.Item>
               </SubMenu>
             </Menu>
           </Sider>

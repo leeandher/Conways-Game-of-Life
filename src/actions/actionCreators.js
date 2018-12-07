@@ -1,4 +1,5 @@
 import { makeRandomBoard } from "../helper";
+import { presets } from "../data/presets.json";
 
 /* BOARD ACTIONS */
 
@@ -22,10 +23,13 @@ export const clearBoard = () => ({
 });
 
 // Load a preset board
-export const loadPreset = preset => ({
-  type: "LOAD_PRESET",
-  preset
-});
+export const loadPreset = preset => {
+  const { board } = presets.find(val => val.name === preset);
+  return {
+    type: "LOAD_PRESET",
+    newBoard: board
+  };
+};
 
 export const spawnCell = (row, col) => ({
   type: "SPAWN_CELL",
