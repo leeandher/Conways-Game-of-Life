@@ -1,7 +1,11 @@
 const board = (state = [], action) => {
   switch (action.type) {
+    // Generate a new board
     case "RANDOMIZE_BOARD":
+    case "SET_SIZE":
       return action.newBoard;
+
+    // Increment to the next generation of the board
     case "INCREMENT_BOARD":
       const newBoard = state.map(row => [...row]);
       state.forEach((row, i) => {
@@ -43,9 +47,13 @@ const board = (state = [], action) => {
       });
 
       return newBoard;
+
+    // Clear the board completely
     case "CLEAR_BOARD":
       // Kill every cell on the board
       return state.map(row => row.map(cell => 0));
+
+    // Load a given preset onto the board
     case "LOAD_PRESET":
       return state;
     case "SPAWN_CELL":

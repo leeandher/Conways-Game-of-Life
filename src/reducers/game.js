@@ -15,6 +15,13 @@ const game = (state = {}, action) => {
         ...state,
         generation: state.generation + 1
       };
+    case "RANDOMIZE_BOARD":
+    case "CLEAR_BOARD":
+    case "SET_SIZE":
+      return {
+        ...state,
+        generation: 0
+      };
     default:
       return state;
   }

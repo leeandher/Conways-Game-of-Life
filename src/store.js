@@ -1,12 +1,13 @@
 import { createStore, compose } from "redux";
 
+import { makeRandomBoard } from "./helper";
 import rootReducer from "./reducers/_root";
 
 const defaultState = {
   config: {
     speed: 300,
-    height: 40,
     width: 50,
+    height: 35,
     theme: "light"
   },
   game: {
@@ -16,16 +17,12 @@ const defaultState = {
 };
 
 // Generate a random board for the initial state and assign it
-const defaultBoard = [];
-for (let i = 0; i < defaultState.config.height; i++) {
-  const rowData = [];
-  for (let j = 0; j < defaultState.config.width; j++) {
-    rowData.push(Math.round(Math.random()));
-  }
-  defaultBoard.push(rowData);
-}
-defaultState.board = defaultBoard;
+defaultState.board = makeRandomBoard(
+  defaultState.config.height,
+  defaultState.config.width
+);
 
+// Allow for the Redux DevTools to be used
 const enhancers = compose(
   window.__REDUX_DEVTOOLS_EXTENSION__
     ? window.__REDUX_DEVTOOLS_EXTENSION__()

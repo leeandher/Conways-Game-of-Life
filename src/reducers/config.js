@@ -1,49 +1,45 @@
 const config = (state = {}, action) => {
   switch (action.type) {
+    // Set the speed of the simulation
     case "SET_SPEED":
       let speed;
       switch (action.speed) {
-        case "fast":
-          speed = 100;
+        case "slow":
+          speed = 750;
           break;
         case "moderate":
         default:
           speed = 300;
           break;
-        case "slow":
-          speed = 750;
+        case "fast":
+          speed = 100;
           break;
       }
       return {
         ...state,
         speed
       };
+
+    // Set the size of the simulation space
     case "SET_SIZE":
-      let height, width;
-      switch (action.size) {
-        case "large":
-          height = 50;
-          width = 60;
-          break;
-        default:
-        case "medium":
-          height = 40;
-          width = 50;
-          break;
-        case "small":
-          height = 25;
-          width = 30;
-          break;
-      }
       return {
         ...state,
-        height,
-        width
+        height: action.height,
+        width: action.width
       };
+
+    // Set the theme of the simulation app
     case "SET_THEME":
       return {
         ...state,
         theme: action.theme
+      };
+
+    case "LOAD_PRESET":
+      return {
+        ...state,
+        width: 50,
+        height: 35
       };
     default:
       return state;

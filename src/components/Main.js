@@ -13,7 +13,10 @@ class Main extends React.Component {
   };
 
   componentDidMount() {
-    // setInterval(() => this.props.incrementBoard(this.props.config.height), 100);
+    // setInterval(
+    //   () => this.props.incrementBoard(this.props.config.height),
+    //   this.props.config.speed
+    // );
   }
 
   render() {
@@ -25,20 +28,31 @@ class Main extends React.Component {
             collapsed={this.state.collapsed}
             onCollapse={collapsed => this.setState({ collapsed })}
           >
-            <Menu theme="dark">
+            <Menu theme={this.props.config.theme}>
               <Menu.Item>
                 <Icon type={this.state.isPlaying ? "pause" : "caret-right"} />
                 <span>{this.state.isPlaying ? "Pause" : "Play"}</span>
               </Menu.Item>
-              <Menu.Item>
+              <Menu.Item
+                onClick={() =>
+                  this.props.incrementBoard(this.props.config.height)
+                }
+              >
                 <Icon type="step-forward" />
                 <span>Increment</span>
               </Menu.Item>
-              <Menu.Item>
+              <Menu.Item onClick={() => this.props.clearBoard()}>
                 <Icon type="close" />
                 <span>Clear</span>
               </Menu.Item>
-              <Menu.Item>
+              <Menu.Item
+                onClick={() =>
+                  this.props.randomizeBoard(
+                    this.props.config.height,
+                    this.props.config.width
+                  )
+                }
+              >
                 <Icon type="redo" />
                 <span>Randomize</span>
               </Menu.Item>
@@ -51,9 +65,15 @@ class Main extends React.Component {
                   </React.Fragment>
                 }
               >
-                <Menu.Item>Slow</Menu.Item>
-                <Menu.Item>Medium</Menu.Item>
-                <Menu.Item>Fast</Menu.Item>
+                <Menu.Item onClick={() => this.props.setSpeed("slow")}>
+                  Slow
+                </Menu.Item>
+                <Menu.Item onClick={() => this.props.setSpeed("moderate")}>
+                  Medium
+                </Menu.Item>
+                <Menu.Item onClick={() => this.props.setSpeed("fast")}>
+                  Fast
+                </Menu.Item>
               </SubMenu>
 
               <SubMenu
@@ -64,9 +84,15 @@ class Main extends React.Component {
                   </React.Fragment>
                 }
               >
-                <Menu.Item>Slow</Menu.Item>
-                <Menu.Item>Medium</Menu.Item>
-                <Menu.Item>Fast</Menu.Item>
+                <Menu.Item onClick={() => this.props.setSize("small")}>
+                  Small (20 &times; 15)
+                </Menu.Item>
+                <Menu.Item onClick={() => this.props.setSize("medium")}>
+                  Medium (35 &times; 20)
+                </Menu.Item>
+                <Menu.Item onClick={() => this.props.setSize("large")}>
+                  Large (50 &times; 35)
+                </Menu.Item>
               </SubMenu>
 
               <SubMenu
@@ -77,9 +103,12 @@ class Main extends React.Component {
                   </React.Fragment>
                 }
               >
-                <Menu.Item>Slow</Menu.Item>
-                <Menu.Item>Medium</Menu.Item>
-                <Menu.Item>Fast</Menu.Item>
+                <Menu.Item onClick={() => this.props.setTheme("light")}>
+                  Light
+                </Menu.Item>
+                <Menu.Item onClick={() => this.props.setTheme("dark")}>
+                  Dark
+                </Menu.Item>
               </SubMenu>
 
               <SubMenu
@@ -90,14 +119,10 @@ class Main extends React.Component {
                   </React.Fragment>
                 }
               >
-                <Menu.Item>Slow</Menu.Item>
+                {/* <Menu.Item>Slow</Menu.Item>
                 <Menu.Item>Medium</Menu.Item>
-                <Menu.Item>Fast</Menu.Item>
+                <Menu.Item>Fast</Menu.Item> */}
               </SubMenu>
-
-              <Menu.Item />
-              <Menu.Item />
-              <Menu.Item />
             </Menu>
           </Sider>
           <Layout>
