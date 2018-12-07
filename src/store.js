@@ -17,9 +17,9 @@ const defaultState = {
 
 // Generate a random board for the initial state and assign it
 const defaultBoard = [];
-for (let i = 0; i < defaultState.height; i++) {
+for (let i = 0; i < defaultState.config.height; i++) {
   const rowData = [];
-  for (let j = 0; j < defaultState.width; j++) {
+  for (let j = 0; j < defaultState.config.width; j++) {
     rowData.push(Math.round(Math.random()));
   }
   defaultBoard.push(rowData);

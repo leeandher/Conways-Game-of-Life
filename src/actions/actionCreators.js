@@ -18,9 +18,10 @@ export const randomizeBoard = (height, width) => {
 };
 
 // Increment the board by one step
-export const incrementBoard = () => {
+export const incrementBoard = height => {
   return {
-    type: "INCREMENT_BOARD"
+    type: "INCREMENT_BOARD",
+    height
   };
 };
 
@@ -36,6 +37,15 @@ export const loadPreset = preset => {
   return {
     type: "LOAD_PRESET",
     preset
+  };
+};
+
+export const spawnCell = (row, col) => {
+  console.log(`row ${row}, col ${col}`);
+  return {
+    type: "SPAWN_CELL",
+    row,
+    col
   };
 };
 

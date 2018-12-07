@@ -13,9 +13,9 @@ const board = (state = [], action) => {
             i !== 0 ? state[i - 1][j + 1] || 0 : 0, // Top right
             row[j - 1] || 0, // Left
             row[j + 1] || 0, // Right
-            i !== this.state.size.height - 1 ? state[i + 1][j - 1] || 0 : 0, // Bottom left
-            i !== this.state.size.height - 1 ? state[i + 1][j] || 0 : 0, // Below
-            i !== this.state.size.height - 1 ? state[i + 1][j + 1] || 0 : 0 // Bottom right
+            i !== action.height - 1 ? state[i + 1][j - 1] || 0 : 0, // Bottom left
+            i !== action.height - 1 ? state[i + 1][j] || 0 : 0, // Below
+            i !== action.height - 1 ? state[i + 1][j + 1] || 0 : 0 // Bottom right
           ];
 
           // Ignore the 'old'/'new' alive values and sum them as ones
@@ -48,6 +48,11 @@ const board = (state = [], action) => {
       return state.map(row => row.map(cell => 0));
     case "LOAD_PRESET":
       return state;
+    case "SPAWN_CELL":
+      const changedBoard = state.map(row => [...row]);
+      changedBoard[action.row][action.col] =
+        changedBoard[action.row][action.col] > 0 ? 0 : 1;
+      return changedBoard;
     default:
       return state;
   }
