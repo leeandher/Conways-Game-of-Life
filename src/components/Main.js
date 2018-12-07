@@ -1,12 +1,11 @@
 import React from "react";
 
-import { Layout, Menu, Icon } from "antd";
+import { Layout } from "antd";
 
-import GameBoard from "./GameBoard";
 import Sidebar from "./Sidebar";
+import Game from "./Game";
 
-const { Content, Sider } = Layout;
-const { SubMenu } = Menu;
+const { Content } = Layout;
 
 class Main extends React.Component {
   state = {
@@ -53,17 +52,9 @@ class Main extends React.Component {
     return (
       <Layout>
         <Sidebar {...this.props} />
-        <Layout>
-          <Content>
-            <h1>Generation: {this.props.game.generation}</h1>
-            <GameBoard
-              height={this.props.config.height}
-              width={this.props.config.width}
-              boardData={this.props.board}
-              spawnCell={this.props.spawnCell}
-            />
-          </Content>
-        </Layout>
+        <Content>
+          <Game {...this.props} />
+        </Content>
       </Layout>
     );
   }

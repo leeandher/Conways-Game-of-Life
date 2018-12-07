@@ -1,26 +1,26 @@
-import React from "react";
+import React, { Component, Fragment } from "react";
 
 import { Layout, Menu, Icon } from "antd";
 
 const { Sider } = Layout;
-const { SubMenu } = Menu;
+const { SubMenu, Item, Divider } = Menu;
 
-class Sidebar extends React.Component {
+class Sidebar extends Component {
   state = {
     collapsed: true
   };
 
   render() {
     const gameButton = this.props.game.isPlaying ? (
-      <Menu.Item onClick={this.props.pauseGame}>
+      <Item onClick={this.props.pauseGame}>
         <Icon type="pause" />
         <span>Pause</span>
-      </Menu.Item>
+      </Item>
     ) : (
-      <Menu.Item onClick={this.props.playGame}>
+      <Item onClick={this.props.playGame}>
         <Icon type="caret-right" />
         <span>Play</span>
-      </Menu.Item>
+      </Item>
     );
 
     return (
@@ -31,17 +31,17 @@ class Sidebar extends React.Component {
       >
         <Menu theme={this.props.config.theme}>
           {gameButton}
-          <Menu.Item
+          <Item
             onClick={() => this.props.incrementBoard(this.props.config.height)}
           >
             <Icon type="step-forward" />
             <span>Increment</span>
-          </Menu.Item>
-          <Menu.Item onClick={() => this.props.clearBoard()}>
+          </Item>
+          <Item onClick={() => this.props.clearBoard()}>
             <Icon type="close" />
             <span>Clear</span>
-          </Menu.Item>
-          <Menu.Item
+          </Item>
+          <Item
             onClick={() =>
               this.props.randomizeBoard(
                 this.props.config.height,
@@ -51,73 +51,63 @@ class Sidebar extends React.Component {
           >
             <Icon type="redo" />
             <span>Randomize</span>
-          </Menu.Item>
-          <Menu.Divider />
+          </Item>
+          <Divider />
           <SubMenu
             title={
-              <React.Fragment>
+              <Fragment>
                 <Icon type="forward" />
                 <span>Speed</span>
-              </React.Fragment>
+              </Fragment>
             }
           >
-            <Menu.Item onClick={() => this.props.setSpeed("slow")}>
-              Slow
-            </Menu.Item>
-            <Menu.Item onClick={() => this.props.setSpeed("moderate")}>
-              Medium
-            </Menu.Item>
-            <Menu.Item onClick={() => this.props.setSpeed("fast")}>
-              Fast
-            </Menu.Item>
+            <Item onClick={() => this.props.setSpeed("slow")}>Slow</Item>
+            <Item onClick={() => this.props.setSpeed("moderate")}>Medium</Item>
+            <Item onClick={() => this.props.setSpeed("fast")}>Fast</Item>
           </SubMenu>
 
           <SubMenu
             title={
-              <React.Fragment>
+              <Fragment>
                 <Icon type="pic-center" />
                 <span>Size</span>
-              </React.Fragment>
+              </Fragment>
             }
           >
-            <Menu.Item onClick={() => this.props.setSize("small")}>
+            <Item onClick={() => this.props.setSize("small")}>
               Small (20 &times; 15)
-            </Menu.Item>
-            <Menu.Item onClick={() => this.props.setSize("medium")}>
+            </Item>
+            <Item onClick={() => this.props.setSize("medium")}>
               Medium (35 &times; 20)
-            </Menu.Item>
-            <Menu.Item onClick={() => this.props.setSize("large")}>
+            </Item>
+            <Item onClick={() => this.props.setSize("large")}>
               Large (50 &times; 35)
-            </Menu.Item>
+            </Item>
           </SubMenu>
 
           <SubMenu
             title={
-              <React.Fragment>
+              <Fragment>
                 <Icon type="star" />
                 <span>Styling</span>
-              </React.Fragment>
+              </Fragment>
             }
           >
-            <Menu.Item onClick={() => this.props.setTheme("light")}>
-              Light
-            </Menu.Item>
-            <Menu.Item onClick={() => this.props.setTheme("dark")}>
-              Dark
-            </Menu.Item>
+            <Item onClick={() => this.props.setTheme("light")}>Light</Item>
+            <Item onClick={() => this.props.setTheme("dark")}>Dark</Item>
           </SubMenu>
 
           <SubMenu
             title={
-              <React.Fragment>
+              <Fragment>
                 <Icon type="build" />
                 <span>Presets</span>
-              </React.Fragment>
+              </Fragment>
             }
           >
-            <Menu.Item onClick={() => this.props.loadPreset("Glider Gun")}>
+            <Item onClick={() => this.props.loadPreset("Glider Gun")}>
               Glider Gun
-            </Menu.Item>
+            </Item>
           </SubMenu>
         </Menu>
       </Sider>
