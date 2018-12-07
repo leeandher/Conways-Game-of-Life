@@ -1,9 +1,22 @@
 const config = (state = {}, action) => {
   switch (action.type) {
     case "SET_SPEED":
+      let speed;
+      switch (action.speed) {
+        case "fast":
+          speed = 100;
+          break;
+        case "moderate":
+        default:
+          speed = 300;
+          break;
+        case "slow":
+          speed = 750;
+          break;
+      }
       return {
         ...state,
-        speed: action.speed
+        speed
       };
     case "SET_SIZE":
       let height, width;
