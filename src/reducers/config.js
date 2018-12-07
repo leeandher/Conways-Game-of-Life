@@ -5,7 +5,7 @@ const config = (state = {}, action) => {
       let speed;
       switch (action.speed) {
         case "slow":
-          speed = 750;
+          speed = 500;
           break;
         case "moderate":
         default:

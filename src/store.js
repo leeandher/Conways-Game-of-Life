@@ -11,7 +11,7 @@ const defaultState = {
     theme: "light"
   },
   game: {
-    isPlaying: false,
+    isPlaying: true,
     generation: 0
   }
 };

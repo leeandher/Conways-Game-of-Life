@@ -25,10 +25,16 @@ class Main extends React.Component {
 
   componentDidUpdate(prevProps) {
     // Only update change the state if the new props affect the game being played
-    if (prevProps.game.isPlaying === this.props.game.isPlaying) return;
+    if (
+      prevProps.game.isPlaying === this.props.game.isPlaying &&
+      prevProps.config.speed === this.props.config.speed
+    )
+      return;
 
     // Play the game
     if (this.props.game.isPlaying) {
+      clearInterval(this.state.gameTimer);
+      this.props.incrementBoard(this.props.config.height);
       const gameTimer = setInterval(
         () => this.props.incrementBoard(this.props.config.height),
         this.props.config.speed
