@@ -1,6 +1,17 @@
 @import "variables";
 
-//GameBoard
+// Sidebar
+.logo {
+  max-width: 30px;
+  margin: 30px auto;
+}
+
+.logo-wrapper {
+  text-align: center;
+  width: 90%;
+}
+
+// GameBoard
 .game-board {
   background: $board-background;
   margin: 0 auto;

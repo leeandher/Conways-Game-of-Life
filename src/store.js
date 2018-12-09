@@ -5,9 +5,9 @@ import rootReducer from "./reducers/_root";
 
 const defaultState = {
   config: {
-    speed: 100,
-    width: 50,
-    height: 35,
+    speed: 200,
+    width: 35,
+    height: 20,
     theme: "light"
   },
   game: {

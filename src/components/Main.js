@@ -58,9 +58,11 @@ class Main extends React.Component {
     return (
       <Layout>
         <Sidebar {...this.props} />
-        <Content>
-          <Game {...this.props} />
-        </Content>
+        <Layout>
+          <Content>
+            <Game {...this.props} />
+          </Content>
+        </Layout>
       </Layout>
     );
   }

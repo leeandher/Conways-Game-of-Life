@@ -5,11 +5,11 @@ const config = (state = {}, action) => {
       let speed;
       switch (action.speed) {
         case "slow":
-          speed = 500;
+          speed = 400;
           break;
         case "moderate":
         default:
-          speed = 300;
+          speed = 200;
           break;
         case "fast":
           speed = 100;

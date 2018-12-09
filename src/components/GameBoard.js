@@ -19,7 +19,7 @@ const Row = ({ row, rowData, spawnCell }) => {
     }
     return (
       <div
-        className={`game-board__cell ${statusClass}`}
+        className={`game-board__cell game-board__cell--animate ${statusClass}`}
         key={i}
         col={i}
         onClick={() => spawnCell(row, i)}
