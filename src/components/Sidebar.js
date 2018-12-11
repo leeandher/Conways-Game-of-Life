@@ -163,6 +163,8 @@ class Sidebar extends Component {
             </Item>
           </SubMenu>
 
+          {/*  Removed themeing implementation
+          
           <SubMenu
             key={"s3"}
             title={
@@ -178,7 +180,7 @@ class Sidebar extends Component {
             <Item key={"s3-2"} onClick={() => this.props.setTheme("dark")}>
               Dark
             </Item>
-          </SubMenu>
+          </SubMenu> */}
 
           <SubMenu
             key={"s4"}
