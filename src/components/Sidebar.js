@@ -87,6 +87,8 @@ class Sidebar extends Component {
         collapsed={this.state.collapsed}
         onCollapse={collapsed => this.setState({ collapsed })}
         theme={this.props.config.theme}
+        breakpoint="md"
+        style={{ borderRight: "1px solid #e8e8e8" }}
       >
         <div className="logo-wrapper">
           <a href="/" title="Conway's Game of Life">
@@ -95,9 +97,11 @@ class Sidebar extends Component {
         </div>
         <Menu
           selectedKeys={this.state.selectedKeys}
+          defaultOpenKeys={["s1", "s2"]}
           mode="inline"
           multiple={true}
           theme={this.props.config.theme}
+          style={{ borderRight: 0 }}
         >
           {gameButton}
           <Item

@@ -3,6 +3,6 @@ $board-background: transparent;
 $cell-size: 13px;
 $cell-margin: 1px;
 
-$cell-colour--dead: rgba(0, 0, 0, 0.1);
-$cell-colour--alive-new: rgb(212, 165, 163);
-$cell-colour--alive-old: rgb(236, 58, 52);
+$cell-colour--dead: rgba(0, 0, 0, 0.025);
+$cell-colour--alive-new: #ffadd2;
+$cell-colour--alive-old: #eb2f96;

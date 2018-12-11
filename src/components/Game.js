@@ -1,19 +1,33 @@
 import React from "react";
+import { Layout, Icon } from "antd";
 
 import GameBoard from "./GameBoard";
 
-import { Layout } from "antd";
+import { names } from "../data/silly-names.json";
+
+const randomName = names[Math.floor(Math.random() * names.length)];
+
 const { Header, Content, Footer } = Layout;
 const Game = props => {
   return (
     <Layout theme={props.config.theme} style={{ height: "100vh" }}>
-      <Header style={{ background: "#FFF" }}>
-        <h1 className="app-header">Conway's Game of Life</h1>
+      <Header style={{ background: "#fff" }}>
+        <h1 className="app-header">
+          Conway's Game of Life
+          <a
+            href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "#c8c8c8", float: "right", margin: "0px" }}
+          >
+            <Icon type="question-circle" />
+          </a>
+        </h1>
       </Header>
       <Content style={{ margin: "16px" }}>
         <h2 className="game-board__species">
           The Evolution of <br />
-          <input placeholder="Magical Llamas" type="text" />
+          <input placeholder={randomName} type="text" />
         </h2>
         <GameBoard
           height={props.config.height}

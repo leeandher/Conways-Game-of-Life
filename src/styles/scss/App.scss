@@ -1,5 +1,13 @@
 @import "variables";
 
+// Body
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 // Sidebar
 .logo {
   max-width: 30px;
@@ -13,6 +21,9 @@
 
 // Header
 .app-header {
+  font-style: italic;
+  text-shadow: 2px 2px $cell-colour--alive-new;
+  white-space: nowrap;
 }
 
 // GameBoard
@@ -37,11 +48,16 @@
   text-align: center;
   input {
     border: 0;
+    border-radius: 5px;
+    box-shadow: inset 0 0 5px $cell-colour--alive-new;
     font-style: italic;
     padding: 3px 5px;
     background: transparent;
     text-align: center;
-    // border: 1px solid $cell-colour--alive-old;
+    &:focus {
+      box-shadow: inset 0 0 15px $cell-colour--alive-old;
+      outline: 0;
+    }
   }
 }
 
