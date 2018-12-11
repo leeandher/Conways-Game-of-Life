@@ -5,8 +5,6 @@ import { Layout } from "antd";
 import Sidebar from "./Sidebar";
 import Game from "./Game";
 
-const { Content } = Layout;
-
 class Main extends React.Component {
   state = {
     gameTimer: null
@@ -58,11 +56,7 @@ class Main extends React.Component {
     return (
       <Layout>
         <Sidebar {...this.props} />
-        <Layout>
-          <Content>
-            <Game {...this.props} />
-          </Content>
-        </Layout>
+        <Game {...this.props} />
       </Layout>
     );
   }

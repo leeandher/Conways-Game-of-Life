@@ -98,7 +98,6 @@ class Sidebar extends Component {
           mode="inline"
           multiple={true}
           theme={this.props.config.theme}
-          // onSelect={this.highlightKeys}
         >
           {gameButton}
           <Item

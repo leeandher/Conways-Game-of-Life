@@ -11,10 +11,38 @@
   width: 90%;
 }
 
+// Header
+.app-header {
+}
+
 // GameBoard
 .game-board {
   background: $board-background;
+  box-sizing: border-box;
+  padding: 10px;
   margin: 0 auto;
+}
+
+.game-board__generation {
+  text-align: center;
+  .number {
+    font-size: 200%;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: underline $cell-colour--alive-old;
+  }
+}
+
+.game-board__species {
+  text-align: center;
+  input {
+    border: 0;
+    font-style: italic;
+    padding: 3px 5px;
+    background: transparent;
+    text-align: center;
+    // border: 1px solid $cell-colour--alive-old;
+  }
 }
 
 .game-board__row {
