@@ -1,44 +1,34 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Conway's Game of Life
 
-## Available Scripts
+Welcome to the repo for my single-page application to simulate [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life).  You can check out the live demo over at [conway.leander.xyz](http://conway.leander.xyz).
 
-In the project directory, you can run:
+This simulation app models the 'zero-player game' which serves more as a evolution/mathematics model than a real game. In essence, a rid contains cells which can either be _living_ (colored) or _dead_ (blank). Each cell's _neighbours_ are specified by the surrounding 8 cells (think of a furnace in Minecraft). Next, the board _evolves_, with the next _generation_ adhering to 4 simple rules:
 
-### `npm start`
+1. Any live cell with fewer than two live neighbors dies, as if by underpopulation.
+2. Any live cell with two or three live neighbors lives on to the next generation.
+3. Any live cell with more than three live neighbors dies, as if by overpopulation.
+4. Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+In my variation, you can actually track the newborn cells since they appear with a lighter shade. Other than that, the newborn cells and old cells are functionally identical.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+The game doesn't have an ending, since eventually the board becomes relatively stable and following generations change less and less, but the main point is to be able to _visualize_ how the ecosystem evolves!
 
-### `npm test`
+## Using the app
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The algorithm running the game does pretty much all the heavy lifting here. Simply sit back and watch your simulation run however you specifiy. On the left, there's a navigation menu containing a few settings you can play around with. 
 
-### `npm run build`
+Above the divider are the management options. The ability to **play/pause** the simulation, as well as **clear**, **randomize** it. The **increment** feature works best when paused, letting you track each generation individually. You can even **click** on indiviual tiles to toggle between alive and dead cells. 
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Below the divider are the configuration settings. Things like **board size**, and **evolution speed** will let you choose how you visualize the evolution. The **presets** load some boards I made myself, might be interesting to watch.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+You may also notice the label above the board with some italicized text. That's actually just a dummy input for naming your simulation, so you can type whatever you like (I randomized it's defaults a bit, let me know if you think I'm funny).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## How it Works
 
-### `npm run eject`
+This app was developed to work completely locally, reaching for no external resources. It was developed in **React** and uses **Redux** for passing data around. **Webpack** was used to package the application and keep it fast and efficient.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+As for the UI, It was developed with the help of **Ant.Design**, a popular UI design language for React. Some of the custom styling was done with the help of **Sass**, and **node-sass** for hot-reloading in development.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Notes
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+If there's something you think I can approve it, make an issue and I'll be sure to respond. Feel free to make a pull request as well, cuz there's definitely some bugs to be squashed. 
