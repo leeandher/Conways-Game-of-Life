@@ -10,7 +10,7 @@ const randomName = names[Math.floor(Math.random() * names.length)];
 const { Header, Content, Footer } = Layout;
 const Game = props => {
   return (
-    <Layout theme={props.config.theme} style={{ height: "100vh" }}>
+    <Layout style={{ height: "100vh" }}>
       <Header style={{ background: "#fff" }}>
         <h1 className="app-header">
           Conway's Game of Life

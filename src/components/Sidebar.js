@@ -51,7 +51,6 @@ class Sidebar extends Component {
         newSelectedKeys.push("s3-2");
         break;
     }
-    console.log(newSelectedKeys);
 
     this.setState({ selectedKeys: newSelectedKeys });
   };
@@ -86,9 +85,9 @@ class Sidebar extends Component {
         collapsible
         collapsed={this.state.collapsed}
         onCollapse={collapsed => this.setState({ collapsed })}
-        theme={this.props.config.theme}
         breakpoint="md"
         style={{ borderRight: "1px solid #e8e8e8" }}
+        theme="light"
       >
         <div className="logo-wrapper">
           <a href="/" title="Conway's Game of Life">
@@ -100,7 +99,6 @@ class Sidebar extends Component {
           defaultOpenKeys={["s1", "s2"]}
           mode="inline"
           multiple={true}
-          theme={this.props.config.theme}
           style={{ borderRight: 0 }}
         >
           {gameButton}
@@ -132,9 +130,15 @@ class Sidebar extends Component {
             key={"s1"}
             title={
               <Fragment>
-                <Icon type="forward" />
+                <Icon
+                  type="forward"
+                  className={this.state.collapsed ? "override-style" : ""}
+                />
                 <span>Speed</span>
               </Fragment>
+            }
+            className={
+              this.state.collapsed && `${this.props.config.theme}-style`
             }
           >
             <Item key={"s1-1"} onClick={() => this.props.setSpeed("slow")}>
@@ -151,9 +155,15 @@ class Sidebar extends Component {
             key={"s2"}
             title={
               <Fragment>
-                <Icon type="pic-center" />
+                <Icon
+                  type="pic-center"
+                  className={this.state.collapsed ? "override-style" : ""}
+                />
                 <span>Size</span>
               </Fragment>
+            }
+            className={
+              this.state.collapsed && `${this.props.config.theme}-style`
             }
           >
             <Item key={"s2-1"} onClick={() => this.props.setSize("small")}>
@@ -167,15 +177,19 @@ class Sidebar extends Component {
             </Item>
           </SubMenu>
 
-          {/*  Removed themeing implementation
-          
           <SubMenu
             key={"s3"}
             title={
               <Fragment>
-                <Icon type="star" />
+                <Icon
+                  type="star"
+                  className={this.state.collapsed ? "override-style" : ""}
+                />
                 <span>Styling</span>
               </Fragment>
+            }
+            className={
+              this.state.collapsed && `${this.props.config.theme}-style`
             }
           >
             <Item key={"s3-1"} onClick={() => this.props.setTheme("light")}>
@@ -184,15 +198,21 @@ class Sidebar extends Component {
             <Item key={"s3-2"} onClick={() => this.props.setTheme("dark")}>
               Dark
             </Item>
-          </SubMenu> */}
+          </SubMenu>
 
           <SubMenu
             key={"s4"}
             title={
               <Fragment>
-                <Icon type="build" />
+                <Icon
+                  type="build"
+                  className={this.state.collapsed ? "override-style" : ""}
+                />
                 <span>Presets</span>
               </Fragment>
+            }
+            className={
+              this.state.collapsed && `${this.props.config.theme}-style`
             }
           >
             <Item

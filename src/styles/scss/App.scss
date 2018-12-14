@@ -8,6 +8,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.dark-style {
+  filter: invert(1);
+  .override-style {
+    filter: invert(1);
+  }
+}
+
 // Sidebar
 .logo {
   max-width: 30px;

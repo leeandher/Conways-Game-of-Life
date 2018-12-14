@@ -54,7 +54,7 @@ class Main extends React.Component {
 
   render() {
     return (
-      <Layout>
+      <Layout className={`${this.props.config.theme}-style`}>
         <Sidebar {...this.props} />
         <Game {...this.props} />
       </Layout>
